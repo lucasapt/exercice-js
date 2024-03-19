@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Respostas</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  h1, h2 {
+    color: #333;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  .resultado {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .resultado h3 {
+    margin-top: 0;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<h1>Respostas</h1>
+
+<div class="resultado">
+  <h2>Questão 1</h2>
+  <p>O valor da variável SOMA ao final do processamento será:</p>
+  <pre id="respostaQuestao1"></pre>
+</div>
+
+<div class="resultado">
+  <h2>Questão 2</h2>
+  <p>Informe um número para verificar se pertence à sequência de Fibonacci:</p>
+  <input type="number" id="inputNumeroFibonacci">
+  <button onclick="verificarFibonacci()">Verificar</button>
+  <p id="respostaQuestao2"></p>
+</div>
+
+<div class="resultado">
+  <h2>Questão 3</h2>
+  <p>Descubra a lógica e complete o próximo elemento:</p>
+  <p>a) 1, 3, 5, 7, <span id="respostaQuestao3a"></span></p>
+  <p>b) 2, 4, 8, 16, 32, 64, <span id="respostaQuestao3b"></span></p>
+  <p>c) 0, 1, 4, 9, 16, 25, 36, <span id="respostaQuestao3c"></span></p>
+  <p>d) 4, 16, 36, 64, <span id="respostaQuestao3d"></span></p>
+  <p>e) 1, 1, 2, 3, 5, 8, <span id="respostaQuestao3e"></span></p>
+  <p>f) 2,10, 12, 16, 17, 18, 19, <span id="respostaQuestao3f"></span></p>
+</div>
+
+<div class="resultado">
+  <h2>Questão 4</h2>
+  <p>Como você faria para descobrir qual interruptor controla cada lâmpada?</p>
+  <p>Resposta: <span id="respostaQuestao4"></span></p>
+</div>
+
+<div class="resultado">
+  <h2>Questão 5</h2>
+  <p>Escreva um programa que inverta os caracteres de um string:</p>
+  <input type="text" id="inputString">
+  <button onclick="inverterString()">Inverter</button>
+  <p>String invertida: <span id="respostaQuestao5"></span></p>
+</div>
+
+<script>
+  // Questão 1
+  const INDICE = 13;
+  let SOMA = 0;
+  let K = 0;
+
+  while (K < INDICE) {
+    K++;
+    SOMA += K;
+  }
+
+  document.getElementById('respostaQuestao1').innerText = SOMA;
+
+  // Questão 2
+  function verificarFibonacci() {
+    const numero = parseInt(document.getElementById('inputNumeroFibonacci').value);
+    const sequencia = [0, 1];
+    let i = 1;
+
+    while (sequencia[i] <= numero) {
+      if (sequencia[i] === numero) {
+        document.getElementById('respostaQuestao2').innerText = `O número ${numero} pertence à sequência de Fibonacci.`;
+        return;
+      }
+      sequencia.push(sequencia[i] + sequencia[i - 1]);
+      i++;
+    }
+    document.getElementById('respostaQuestao2').innerText = `O número ${numero} não pertence à sequência de Fibonacci.`;
+  }
+
+  // Questão 3
+  document.getElementById('respostaQuestao3a').innerText = "9";
+  document.getElementById('respostaQuestao3b').innerText = "128";
+  document.getElementById('respostaQuestao3c').innerText = "49";
+  document.getElementById('respostaQuestao3d').innerText = "100";
+  document.getElementById('respostaQuestao3e').innerText = "13";
+  document.getElementById('respostaQuestao3f').innerText = "20";
+
+  // Questão 4
+  document.getElementById('respostaQuestao4').innerText = "Você pode ligar o primeiro interruptor e aguardar alguns minutos, desligá-lo e ligar o segundo interruptor. Em seguida, vá até as lâmpadas e veja qual está acesa. O interruptor que foi ligado e desligado primeiro controla essa lâmpada. O interruptor que foi ligado em seguida e não desligado controla a segunda lâmpada. O interruptor que não foi tocado controla a terceira lâmpada.";
+
+  // Questão 5
+  function inverterString() {
+    const str = document.getElementById('inputString').value;
+    let invertedString = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+      invertedString += str[i];
+    }
+    document.getElementById('respostaQuestao5').innerText = invertedString;
+  }
+</script>
+
+</body>
+</html>
